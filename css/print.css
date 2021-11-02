@@ -1,0 +1,28 @@
+
+@page {
+  size: A3;
+  margin: 0;
+}
+body {
+  margin: 0;
+  background: white;
+}
+#poster {
+  position: relative;
+  page-break-inside: avoid;
+  width: 100%;
+  height: 42cm;
+  transform: none !important;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  box-shadow: none;
+  font-size:calc(150pt * var(--scale));
+}
+article {
+  
+}
+video,
+button {
+  display: none !important;
+}
