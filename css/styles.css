@@ -49,7 +49,6 @@ img {
   height: 4961px;
   background: white;  
   font-size: 150px;
-  /* font-size: calc(var(--size) * var(--scale));     */
 }
 #tryagain, .tryagain #takesnapshot {display: block;}
 #takesnapshot, .tryagain #poster img, .tryagain #tryagain  {display: none;}
