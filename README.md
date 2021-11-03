@@ -1,4 +1,4 @@
-# PrePosterPrint
+# ATROIS
 
 Outil frugal dédié à la création de posters A3 dans le navigateur.
 
