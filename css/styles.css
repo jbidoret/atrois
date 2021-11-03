@@ -1,5 +1,3 @@
-
-
 @font-face {
   font-family: 'Karrik';
   src:  url('fonts/Karrik-Regular.woff2') format('woff2');
@@ -13,15 +11,12 @@
   font-style: italic;
 }
 
-:root{
-  --scale:1;
-  --size:1200px;
-}
 * { box-sizing:border-box; }
 html, body { height: 100%; }
 body { 
   margin: 0; 
   background: #333; 
+  font-family: 'Karrik';
 }
 
 video, img {
@@ -44,21 +39,95 @@ img {
   position: absolute;
   left:50%;
   top:50%;
-  transform: translate(-50%, -50%);
   width: 3508px;
   height: 4961px;
   background: white;  
   font-size: 150px;
 }
-#tryagain, .tryagain #takesnapshot {display: block;}
-#takesnapshot, .tryagain #poster img, .tryagain #tryagain  {display: none;}
+#tryagain, .show-video #takesnapshot {display: block;}
+video {display: none;}
+.show-video video { display: block;}
+#takesnapshot, .show-video #poster img, .show-video #tryagain  {display: none;}
  
 article {
-  font-family: 'Karrik';
+  font-feature-settings: "ss01";
   position: absolute; 
   left: 0;
   top: 0;
   z-index: 2;
   width: 100%;
   height: 100%;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 50px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 10;
+}
+button {
+  --icon-size:40px;
+  font-family: 'Karrik';
+  text-transform: uppercase;
+  box-sizing: content-box;
+  border:2.5px solid;
+  height: var(--icon-size);
+  padding:0 1em 0 calc(var(--icon-size) - 5px);
+  display: block;
+  background: white url(icons.svg) no-repeat 0 0;
+  background-size: var(--icon-size) auto;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+}
+button span {
+  max-width: 0;
+  box-sizing: border-box;
+  transition: all 250ms;
+  display: block;
+  overflow: hidden;
+}
+button:hover span {
+  padding-left: .75em;
+  max-width: 100%;
+}
+#text{background-position: 5px 0;}
+#takesnapshot{background-position: 5px calc(var(--icon-size) * -1);}
+#tryagain{background-position: 5px calc(var(--icon-size) * -2);}
+#print{background-position: 5px calc(var(--icon-size) * -3);}
+#apply-md,
+#apply-css{background-position: 5px calc(var(--icon-size) * -4);}
+#cancel-md,
+#cancel-css{background-position: 5px calc(var(--icon-size) * -5);}
+#css{background-position: 5px calc(var(--icon-size) * -6);}
+
+.editor {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 60px;
+  display: none;
+}
+.editor.visible{
+  display: grid;
+  z-index: 11;
+}
+.editor nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  grid-row: 2;
 }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>L’idéal anarchique – un workshop web to print</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css" media="all">
+  <link rel="stylesheet" href="css/editor.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <style id="customstyles">
+#poster article {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  flex-direction: column;
+  text-align: center; 
+  color: white;
+  padding: 1em 0;
+}
+#poster .overlay {
+  position: absolute;
+  top:0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  z-index: 1;
+}
+#poster h2 {
+  font-family: serif;
+  font-size: .5em;
+  margin: 0;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+#poster h1 {
+  margin: 0 0 .5em; 
+  font-size: 2.5em;
+  line-height: .9; 
+  font-weight: normal; 
+  position: relative; 
+  z-index: 2;
+}
+#poster p {
+  font-family: serif;
+  margin: 0; 
+  position: relative; 
+  z-index: 2; 
+  padding-bottom: 1em;
+}
+#poster a { 
+  text-decoration: underline; 
+  color: currentColor; 
+}
+</style>
+</head>
+<body class="">
+  
+  <nav id="nav">
+    <button id="takesnapshot"><span>Snap</span></button>
+    <button id="tryagain"><span>Capture</span></button>
+    <button id="text"><span>Text</span></button>
+    <button id="css"><span>Style</span></button>
+    <button id="print"><span>Print</span></button>
+  </nav>
+
+  <div id="poster">
+    <img src="reclus.jpg" alt="">
+    <video playsinline autoplay></video>
+    <div class="overlay"></div>
+    <article>
+      <h2>La maison des éditions présente</h2>
+      <div>
+        <h1>
+          <span>L</span><span>’</span><span>I</span><span>D</span><span>É</span><span>A</span><span>L</span><br><span>A</span><span>N</span><span>A</span><span>R</span><span>C</span><span>H</span><span>I</span><span>Q</span><span>U</span><span>E</span>
+        </h1>
+        <p>
+          Workshop <i>web to print</i><br>
+          en compagnie d’Elisée Reclus<br>
+          au Bel Ordinaire, à Billère<br>
+          du 14 au 18 novembre 2021<br>
+          <a href="https://maisondeseditions.fr/fr/evenements/l-ideal-anarchique">maisondeseditions.fr</a>        
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <div id="css-editor" class="editor">
+    <textarea class="mousetrap" id="editing-css" spellcheck="false" data-target="highlighting-css"></textarea>
+    <pre id="highlighting-css" aria-hidden="true">
+      <code class="language-css" id="highlighting-css-content"></code>
+    </pre>
+    <nav>
+      <button id="cancel-css" data-action="cancel-css"><span>Cancel</span></button>
+      <button id="apply-css" data-action="apply-css"><span>Apply</span></button>
+    </nav>
+  </div>
+
+  <div id="md-editor" class="editor">
+    <textarea class="mousetrap" id="editing-md" spellcheck="false" data-target="highlighting-md"># L’idéal anarchique
+Workshop _web to print_    
+en compagnie d’Elisée Reclus    
+au Bel Ordinaire, à Billère    
+du 14 au 18 novembre 2021    
+[maisondeseditions.fr](https://maisondeseditions.fr/fr/evenements/l-ideal-anarchique)</textarea>
+    <pre id="highlighting-md" aria-hidden="true">
+      <code class="language-md" id="highlighting-md-content"># L’idéal anarchique
+Workshop _web to print_    
+en compagnie d’Elisée Reclus    
+au Bel Ordinaire, à Billère    
+du 14 au 18 novembre 2021    
+[maisondeseditions.fr](https://maisondeseditions.fr/fr/evenements/l-ideal-anarchique)</code>
+    </pre>
+    <nav>
+      <button id="cancel-md" data-action="cancel-md"><span>Cancel</span></button>
+      <button id="apply-md" data-action="apply-md"><span>Apply</span></button>
+    </nav>
+  </div>
+
+  <script>
+    var s = document.querySelectorAll("h1 span");
+    var sets = ["salt", "ss01", "ss02", "ss03", ""]
+    setInterval(function(){
+      var item = s[Math.floor(Math.random()*s.length)];
+      var feat = sets[Math.floor(Math.random()*sets.length)];
+      item.style.fontFeatureSettings = `'${feat}' on`;
+    }, 30)
+  </script>
+
+  <script src="js/showdown.min.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/mousetrap.min.js"></script>
+  <script src="js/resize.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

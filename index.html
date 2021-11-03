@@ -5,20 +5,56 @@
   <title>HTML5 Media Device Access</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/styles.css" media="all">
+  <link rel="stylesheet" href="css/editor.css">
   <link rel="stylesheet" href="css/print.css" media="print">
+<style id="customstyles">#poster{ color:red}
+</style>
 </head>
-<body class="tryagain">
-  <button id="takesnapshot">+</button>
-  <button id="tryagain">?</button>
+<body class="show-video">
+  
+  <nav id="nav">
+    <button id="takesnapshot"><span>Snap</span></button>
+    <button id="tryagain"><span>Capture</span></button>
+    <button id="text"><span>Text</span></button>
+    <button id="css"><span>Style</span></button>
+    <button id="print"><span>Print</span></button>
+  </nav>
+
   <div id="poster">
     <img src="void.svg" alt="">
     <video playsinline autoplay></video>
-    <article contenteditable>
-      Ici : le contenu devrait aller jusqu’au bout de la ligne…
+    <article>
+      <p>De tout temps il y eu des hommes libres, des contemplateurs de la loi, des hommes vivant sans maître de par le droit primordial de leur existence et de leur pensée.</p>
     </article>
   </div>
-  
 
-  <script src="main.js"></script>
+  <div id="css-editor" class="editor">
+    <textarea id="editing-css" spellcheck="false" data-target="highlighting-css"></textarea>
+    <pre id="highlighting-css" aria-hidden="true">
+      <code class="language-css" id="highlighting-css-content"></code>
+    </pre>
+    <nav>
+      <button id="cancel-css" data-action="cancel-css"><span>Cancel</span></button>
+      <button id="apply-css" data-action="apply-css"><span>Apply</span></button>
+    </nav>
+  </div>
+
+  <div id="md-editor" class="editor">
+    <textarea id="editing-md" spellcheck="false" data-target="highlighting-md"></textarea>
+    <pre id="highlighting-md" aria-hidden="true">
+      <code class="language-md" id="highlighting-md-content"></code>
+    </pre>
+    <nav>
+      <button id="cancel-md" data-action="cancel-md"><span>Cancel</span></button>
+      <button id="apply-md" data-action="apply-md"><span>Apply</span></button>
+    </nav>
+  </div>
+
+  <script src="js/showdown.min.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/mousetrap.min.js"></script>
+  <script src="js/resize.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

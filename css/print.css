@@ -12,16 +12,18 @@ body {
   page-break-inside: avoid;
   width: 100%;
   height: 42cm;
-  transform: none !important;
   overflow: hidden;
   left: 0;
   top: 0;
+  /* reset styles */
+  transform: none !important;
   box-shadow: none;
   /* 300 dpi to 96 dpi */
   font-size:calc(150px / (300 / 96));
 }
 
 video,
-button {
-  display: none !important;
+#nav,
+.editor {
+  display: none;
 }
